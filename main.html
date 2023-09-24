@@ -5,23 +5,58 @@
   <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.5.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.21.0"></script>
-  
-  <!-- CSS file -->
-  <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
 
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Looking at World Education Outcomes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+        #choropleth_map {
+          display: block;
+          width: 100%;
+          height: 500px;
+          margin-bottom: 20px;
+        }
+    </style>
 
 </head>
+
 <body>
+  <h1>Looking at World Education Outcomes</h1>
+
+  <p>
+      Education plays a pivotal role in shaping the destinies of individuals, nations, and economies. It is the cornerstone for personal development, fostering equality, and promoting sustainable development. By examining education outcomes across the globe, we gain valuable insights into the progress and challenges faced by different regions, thereby enabling informed decision-making and targeted interventions.
+  </p>
   
-<div id="choropleth_map"></div>
+  <div id="choropleth_map"></div>
 
-<script type="text/javascript">
+  <script type="text/javascript">
 
-  var spec2 = "js/choropleth_map.vg.json";
-  vegaEmbed('#choropleth_map', spec2).then(function(result) {
-    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-  }).catch(console.error);
-</script>
+    var spec2 = "js/map1.vg.json";
+    vegaEmbed('#choropleth_map', spec2).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+  </script>
+
+  <p>
+    <br>The Adjusted Net Enrolment Rate (ANER) for a country is a significant indicator used to assess the inclusivity and accessibility of its education system. It represents the percentage of children of official school-age who are enrolled in school, providing insights into how well the country is ensuring education for all its children.
+    <br>A high ANER indicates a higher proportion of eligible children are attending schools, reflecting positively on the country's educational outreach and inclusivity. Conversely, a lower ANER may signal challenges such as geographical disparities, socio-economic barriers, or other factors limiting access to education.
+  </p>
 
 </body>
 </html>
+

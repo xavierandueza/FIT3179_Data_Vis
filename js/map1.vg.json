@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "World Education",
+  "title": "2014 World Adjusted Net Enrolment Rates (ANER)",
   "width": 800,
   "height": 500,
   "data": {
@@ -26,7 +26,7 @@
           "lookup": "properties.NAME",
           "from": {
             "data": {
-              "url": "https://raw.githubusercontent.com/xavierandueza/FIT3179_Data_Vis/main/data/refined_dataset.csv"
+              "url": "https://raw.githubusercontent.com/xavierandueza/FIT3179_Data_Vis/main/data/adjusted_net_enrolment_rate.csv"
             },
             "key": "Country Name",
             "fields": ["2014"]
@@ -37,11 +37,12 @@
       "encoding": {
         "color": {
           "field": "2014",
-          "type": "quantitative"
+          "type": "quantitative",
+          "title": "ANER"
         },
         "tooltip": [
-          {"field": "properties.NAME", "type": "nominal", "title": "Country Name"},
-          {"field": "2014", "type": "quantitative"}
+          {"field": "properties.NAME", "type": "nominal", "title": "Country"},
+          {"field": "2014", "type": "quantitative", "title": "Adjusted Net Enrolment Rate"}
         ]
       }
     }
