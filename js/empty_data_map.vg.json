@@ -1,13 +1,13 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "COVID-19 Active Cases (10 Oct 2020)",
+  "title": "World Education",
   "width": 800,
   "height": 500,
   "data": {
-    "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/3_choropleth_map/js/ne_110m_admin_0_countries.topojson",
+    "url": "https://raw.githubusercontent.com/xavierandueza/FIT3179_Data_Vis/main/js/ne_110m_admin_0_countries.topojson",
     "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
   },
-  "projection": {"type": "equalEarth"},
+  "projection": {"type": "equalEarth"}, 
   "layer":[
     {
       "transform": [
@@ -26,30 +26,24 @@
           "lookup": "properties.NAME",
           "from": {
             "data": {
-              "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/3_choropleth_map/data/covid_10_10_2020.csv"
+              "url": "https://raw.githubusercontent.com/xavierandueza/FIT3179_Data_Vis/main/data/refined_dataset.csv"
             },
-            "key": "Country",
-            "fields": ["Active"]
+            "key": "Country Name",
+            "fields": ["2014"]
           }
         }
       ],
       "mark": {"type": "geoshape", "stroke": "white"},
       "encoding": {
         "color": {
-          "field": "Active",
-          "type": "quantitative",
-          "scale": {
-            "type": "threshold",
-            "domain": [10000, 100000, 500000],
-            "range": ["#fdbe85", "#fd8d3c", "#e6550d", "#a63603"]
-          }
+          "field": "2014",
+          "type": "quantitative"
         },
         "tooltip": [
-          {"field": "properties.NAME", "type": "nominal", "title": "Country"},
-          {"field": "Active", "type": "quantitative"}
+          {"field": "properties.NAME", "type": "nominal", "title": "Country Name"},
+          {"field": "2014", "type": "quantitative"}
         ]
       }
     }
   ]
-  
 }
