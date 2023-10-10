@@ -1,0 +1,58 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": { "text": "Education around the world" },
+    "data": {
+        "url": "https://raw.githubusercontent.com/xavierandueza/FIT3179_Data_Vis/main/data/adjusted_net_enrolment_rate.csv"
+    },
+    "params" : [
+        {
+            "name": "Type_selection",
+            "bind": {
+              "input": "select",
+              "options": [
+                "North America",
+                "South America",
+                "Europe",
+                "Africa",
+                "Asia",
+                "Oceania"
+              ],
+              "labels": [
+                "Sub-Continents",
+                "Income-based",
+                "Countries"
+              ],
+              "name": "Area Selection: "
+            }
+        }
+    ],
+    "transform" : [
+        {"filter" : "datum.Metric_Type == Type_selection"}
+    ],
+    "encoding": {
+        "y": { 
+            "field": "1970", 
+            "type": "quantitative", 
+            "title":"Adjusted Net Enrolment Rate"
+        },
+        "x": { 
+            "field": "Country Name", 
+            "type": "nominal", 
+            "title": null}
+    },
+    "layer" : [
+        {
+            "mark": "bar",
+            "encoding": {
+                "color": {
+                    "field": "Country Name",
+                    "type": "nominal",
+                    "scale": {
+                        "scheme": "category20b"
+                    },
+                    "legend": null
+                }
+            }
+        }
+    ]
+  }
