@@ -43,10 +43,21 @@
   
   <div id="choropleth_map"></div>
 
+  <div id="barchart"></div>
+
+  <script type="text/javascript">
+
+    var spec1 = "js/map1.vg.json";
+    vegaEmbed('#choropleth_map', spec1).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+  </script>
+
   <script type="text/javascript">
 
     var spec2 = "js/bar_chart_interactive.vg.json";
-    vegaEmbed('#choropleth_map', spec2).then(function(result) {
+    vegaEmbed('#barchart', spec2).then(function(result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
 
