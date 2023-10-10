@@ -10,15 +10,12 @@
             "bind": {
               "input": "select",
               "options": [
-                "North America",
-                "South America",
-                "Europe",
-                "Africa",
-                "Asia",
-                "Oceania"
+                "Sub-continents",
+                "Income-based",
+                "Countries"
               ],
               "labels": [
-                "Sub-Continents",
+                "Sub-continents",
                 "Income-based",
                 "Countries"
               ],
@@ -31,7 +28,7 @@
     ],
     "encoding": {
         "y": { 
-            "field": "1970", 
+            "field": "2000", 
             "type": "quantitative", 
             "title":"Adjusted Net Enrolment Rate"
         },
@@ -43,16 +40,12 @@
     "layer" : [
         {
             "mark": "bar",
-            "encoding": {
-                "color": {
-                    "field": "Country Name",
-                    "type": "nominal",
-                    "scale": {
-                        "scheme": "category20b"
-                    },
-                    "legend": null
-                }
-            }
+            "encoding" : {
+              "tooltip": [
+              {"field": "Country Name", "type": "nominal"},
+              {"field": "2000", "type": "quantitative", "title" : "Adjusted Net Enrolment Rate", "format": ","}
+            ]
+          }
         }
     ]
   }
