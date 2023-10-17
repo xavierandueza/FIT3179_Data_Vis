@@ -1,23 +1,55 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 800,
-    "height": 600,
     "title": "Spend Per Student Across Income Groups",
-    "data": { "url": "https://raw.githubusercontent.com/xavierandueza/FIT3179_Data_Vis/main/data/long_SpendPerStudent.csv" },
+    "columns" : 2,
     "repeat": ["Low income",
                 "Lower middle income",
                 "Upper middle income",
                 "High income: nonOECD",
                 "High income: OECD"],
     "spec": {
-        "mark": "line",
-        "encoding": {
-        "x": {"field": "date", "timeUnit": "month"},
-        "y": {
-            "field": {"repeat": "repeat"},
-            "aggregate": "mean"
-        },
-        "color": {"field": "location"}
-        }
+        "layer" :
+        [
+            {
+                "data": { "url": "https://raw.githubusercontent.com/xavierandueza/FIT3179_Data_Vis/main/data/wide_SpendPerStudent.csv"},
+                "transform" : [
+                    {"filter": "datum.Value !== null && datum.Value !== 0 && !isNaN(datum.Value)"}
+                ],
+                "mark" : "line",
+                "encoding": {
+                    "x": {"field": "Year", 
+                            "type": "nominal", 
+                            "timeUnit": "year"},
+                    "y": {"aggregate" : "mean", "field": {"repeat": "repeat"}, 
+                            "type": "quantitative", 
+                            "title" : "Spend Per Student, Per GDP Per Capita (%)"},
+                    "color": {"field": "Region", "legend" : {"orient": "bottom"}, "scale": {"scheme": "viridis"}},
+                    "tooltip": [
+                        {"field": "Region", "type": "nominal", "title": "Region"}
+                    ]
+                }
+            },
+            {
+                "data": {
+                  "values": [
+                    {
+                      "Low income": "Income: Low income",
+                      "Lower middle income": "Income: Lower middle income",
+                      "Upper middle income": "Income: Upper middle income",
+                      "High income: nonOECD": "Income: High income: nonOECD",
+                      "High income: OECD": "Income: High income: OECD"
+                    }
+                  ]
+                },
+                "mark": {
+                  "type": "text",
+                  "align": "right",
+                  "baseline": "bottom",
+                  "x": "width",
+                  "y": 0
+                },
+                "encoding": {"text": {"field": {"repeat": "repeat"}}}
+            }
+        ]
     }
 }
