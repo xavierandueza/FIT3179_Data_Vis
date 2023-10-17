@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Spend Per Student Across Income Groups",
+    "title": "Average Spend Per Student Across Region, in Income Groups",
     "columns" : 2,
     "repeat": ["Low income",
                 "Lower middle income",
