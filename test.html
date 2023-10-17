@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.5.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.21.0"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+    <link rel="stylesheet" type="text/css" href="css/test.css">  <!-- Linking to the CSS file -->
+
+</head>
+<div class = "flex-column-container">
+    <!-- Left hand side of screen -->
+    <div class="column-flexible side-bar-colour"></div>
+
+    <!-- Middle section of screen -->
+    <div class = "column-fixed" style="width: 850px;">
+
+        <div class="flex-row-container">  <!-- Outer flex container for rows -->
+            
+            <!-- Title Row -->
+            <div class = "flex-column-container">
+                <div class="column-flexible title">Column 4</div>
+            </div>
+            
+            <!-- Intro text row -->
+            <div class="flex-column-container">
+                <div class="column-flexible">Education plays a pivotal role in shaping the destinies of individuals, nations, and economies. It is the cornerstone for personal development, fostering equality, and promoting sustainable development.</div>
+                <div class="column-flexible">Column 4</div>
+            </div>
+            
+            <!-- Map row -->
+            <div class="flex-column-container">
+                <div id = "world-map" class="column-flexible"></div>
+                
+                <!-- insert map script -->
+                <script type="text/javascript">
+
+                    var spec1 = "js/map1.vg.json";
+                    vegaEmbed('#world-map', spec1).then(function(result) {
+                      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+                    }).catch(console.error);
+                
+                  </script>
+            </div>
+            
+            <!-- Map row -->
+            <div class="flex-column-container">
+                <div class="column-flexible">NEXT PLOT GOES HERE</div>
+                <div class="column-flexible">TEXT EXPLAINING PLOT GOES HERE</div>
+            </div>
+
+            <div class="flex-column-container">
+                <div class="column-flexible">TEXT EXPLAINING PLOT GOES HERE</div>
+                <div class="column-flexible">NEXT PLOT GOES HERE</div>
+            </div>
+
+            <div class="flex-column-container">
+                <div class="column-flexible">NEXT PLOT GOES HERE</div>
+                <div class="column-flexible">TEXT EXPLAINING PLOT GOES HERE</div>
+            </div>
+
+            <div class="flex-column-container">
+                <div class="column-flexible">TEXT EXPLAINING PLOT GOES HERE</div>
+                <div class="column-flexible">NEXT PLOT GOES HERE</div>
+            </div>
+
+            <div class="flex-column-container">
+                <div class="column-flexible">FINAL COLUMN DIV - USE TO REFERENCE STUFF IN SMALL TEXT</div>
+            </div>
+        
+        </div>
+    </div>
+
+    <!-- Right hand side of screen -->
+    <div class="column-flexible side-bar-colour"></div>
+</div>
+
+</html>
