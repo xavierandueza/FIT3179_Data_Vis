@@ -1,0 +1,207 @@
+{
+    "$schema": "https://vega.github.io/schema/vega/v5.json",
+    "description": "TITLE HERE.",
+    "width": 800,
+    "height": 800,
+    "config": {
+      "axisY": {
+        "titleX": -2,
+        "titleY": 410,
+        "titleAngle": -45,
+        "titleAlign": "right",
+        "titleBaseline": "top"
+      }
+    },
+    "data": [
+      {
+        "name": "cars",
+        "url": "https://raw.githubusercontent.com/xavierandueza/FIT3179_Data_Vis/main/data/wide_LiteracyData.csv",
+        "transform": [
+            {"type": "filter", "expr": "datum['Adult literacy rate, population 15+ years, female (%)'] !== null && !isNaN(datum['Adult literacy rate, population 15+ years, female (%)']) !== null && !isNaN(datum['Adult literacy rate, population 15+ years, female (%)'] !== null && !isNaN(datum['Adult literacy rate, population 15+ years, female (%)']))"},
+            {"type": "filter", "expr": "datum['Adult literacy rate, population 15+ years, male (%)'] !== null && !isNaN(datum['Adult literacy rate, population 15+ years, male (%)']) !== null && !isNaN(datum['Adult literacy rate, population 15+ years, male (%)'] !== null && !isNaN(datum['Adult literacy rate, population 15+ years, male (%)']))"},
+            {"type": "filter", "expr": "datum['Elderly literacy rate, population 65+ years, female (%)'] !== null && !isNaN(datum['Elderly literacy rate, population 65+ years, female (%)']) !== null && !isNaN(datum['Elderly literacy rate, population 65+ years, female (%)'] !== null && !isNaN(datum['Elderly literacy rate, population 65+ years, female (%)']))"},
+            {"type": "filter", "expr": "datum['Elderly literacy rate, population 65+ years, male (%)'] !== null && !isNaN(datum['Elderly literacy rate, population 65+ years, male (%)']) !== null && !isNaN(datum['Elderly literacy rate, population 65+ years, male (%)'] !== null && !isNaN(datum['Elderly literacy rate, population 65+ years, male (%)']))"},
+            {"type": "filter", "expr": "datum['Literacy rate, population 25-64 years, female (%)'] !== null && !isNaN(datum['Literacy rate, population 25-64 years, female (%)']) !== null && !isNaN(datum['Literacy rate, population 25-64 years, female (%)'] !== null && !isNaN(datum['Literacy rate, population 25-64 years, female (%)']))"},
+            {"type": "filter", "expr": "datum['Literacy rate, population 25-64 years, male (%)'] !== null && !isNaN(datum['Literacy rate, population 25-64 years, male (%)']) !== null && !isNaN(datum['Literacy rate, population 25-64 years, male (%)'] !== null && !isNaN(datum['Literacy rate, population 25-64 years, male (%)']))"},
+            {"type": "filter", "expr": "datum['Youth literacy rate, population 15-24 years, female (%)'] !== null && !isNaN(datum['Youth literacy rate, population 15-24 years, female (%)']) !== null && !isNaN(datum['Youth literacy rate, population 15-24 years, female (%)'] !== null && !isNaN(datum['Youth literacy rate, population 15-24 years, female (%)']))"},
+            {"type": "filter", "expr": "datum['Youth literacy rate, population 15-24 years, male (%)'] !== null && !isNaN(datum['Youth literacy rate, population 15-24 years, male (%)']) !== null && !isNaN(datum['Youth literacy rate, population 15-24 years, male (%)'] !== null && !isNaN(datum['Youth literacy rate, population 15-24 years, male (%)']))"},
+            {"type": "formula", "as": "Adult literacy rate, population 15+ years, female (%)_num", "expr": "toFloat(datum['Adult literacy rate, population 15+ years, female (%)'])"},
+            {"type": "formula", "as": "Adult literacy rate, population 15+ years, male (%)_num", "expr": "toFloat(datum['Adult literacy rate, population 15+ years, male (%)'])"},
+            {"type": "formula", "as": "Elderly literacy rate, population 65+ years, female (%)_num", "expr": "toFloat(datum['Elderly literacy rate, population 65+ years, female (%)'])"},
+            {"type": "formula", "as": "Elderly literacy rate, population 65+ years, male (%)_num", "expr": "toFloat(datum['Elderly literacy rate, population 65+ years, male (%)'])"},
+            {"type": "formula", "as": "Literacy rate, population 25-64 years, female (%)_num", "expr": "toFloat(datum['Literacy rate, population 25-64 years, female (%)'])"},
+            {"type": "formula", "as": "Literacy rate, population 25-64 years, male (%)_num", "expr": "toFloat(datum['Literacy rate, population 25-64 years, male (%)'])"},
+            {"type": "formula", "as": "Youth literacy rate, population 15-24 years, female (%)_num", "expr": "toFloat(datum['Youth literacy rate, population 15-24 years, female (%)'])"},
+            {"type": "formula", "as": "Youth literacy rate, population 15-24 years, male (%)_num", "expr": "toFloat(datum['Youth literacy rate, population 15-24 years, male (%)'])"}
+          ]
+      },
+      {
+        "name": "fields",
+        "values": [
+          "Adult literacy rate, population 15+ years, female (%)",
+          "Adult literacy rate, population 15+ years, male (%)",
+          "Elderly literacy rate, population 65+ years, female (%)",
+          "Elderly literacy rate, population 65+ years, male (%)",
+          "Literacy rate, population 25-64 years, female (%)",
+          "Literacy rate, population 25-64 years, male (%)",
+          "Youth literacy rate, population 15-24 years, female (%)",
+          "Youth literacy rate, population 15-24 years, male (%)"
+        ]
+      }
+    ],
+    "scales": [
+      {
+        "name": "ord",
+        "type": "point",
+        "range": "width",
+        "round": true,
+        "domain": {"data": "fields", "field": "data"}
+      },
+      {
+        "name": "Adult literacy rate, population 15+ years, female (%)",
+        "type": "linear",
+        "range": "height",
+        "zero": false,
+        "nice": true,
+        "domain": {"data": "cars", "field": "Adult literacy rate, population 15+ years, female (%)_num"}
+      },
+      {
+        "name": "Adult literacy rate, population 15+ years, male (%)",
+        "type": "linear",
+        "range": "height",
+        "zero": false,
+        "nice": true,
+        "domain": {"data": "cars", "field": "Adult literacy rate, population 15+ years, male (%)_num"}
+      },
+      {
+        "name": "Elderly literacy rate, population 65+ years, female (%)",
+        "type": "linear",
+        "range": "height",
+        "zero": false,
+        "nice": true,
+        "domain": {"data": "cars", "field": "Elderly literacy rate, population 65+ years, female (%)_num"}
+      },
+      {
+        "name": "Elderly literacy rate, population 65+ years, male (%)",
+        "type": "linear",
+        "range": "height",
+        "zero": false,
+        "nice": true,
+        "domain": {"data": "cars", "field": "Elderly literacy rate, population 65+ years, male (%)_num"}
+      },
+      {
+        "name": "Literacy rate, population 25-64 years, female (%)",
+        "type": "linear",
+        "range": "height",
+        "zero": false,
+        "nice": true,
+        "domain": {"data": "cars", "field": "Literacy rate, population 25-64 years, female (%)_num"}
+      },
+      {
+        "name": "Literacy rate, population 25-64 years, male (%)",
+        "type": "linear",
+        "range": "height",
+        "zero": false,
+        "nice": true,
+        "domain": {"data": "cars", "field": "Literacy rate, population 25-64 years, male (%)_num"}
+      },
+      {
+        "name": "Youth literacy rate, population 15-24 years, female (%)",
+        "type": "linear",
+        "range": "height",
+        "zero": false,
+        "nice": true,
+        "domain": {"data": "cars", "field": "Youth literacy rate, population 15-24 years, female (%)_num"}
+      },
+      {
+        "name": "Youth literacy rate, population 15-24 years, male (%)",
+        "type": "linear",
+        "range": "height",
+        "zero": false,
+        "nice": true,
+        "domain": {"data": "cars", "field": "Youth literacy rate, population 15-24 years, male (%)_num"}
+      }
+    ],
+    "axes": [
+      {
+        "orient": "left",
+        "zindex": 1,
+        "scale": "Adult literacy rate, population 15+ years, female (%)",
+        "title": "Adult literacy rate, population 15+ years, female (%)",
+        "offset": {"scale": "ord", "value": "Adult literacy rate, population 15+ years, female (%)_num", "mult": -1}
+      },
+      {
+        "orient": "left",
+        "zindex": 1,
+        "scale": "Adult literacy rate, population 15+ years, male (%)",
+        "title": "Adult literacy rate, population 15+ years, male (%)",
+        "offset": {"scale": "ord", "value": "Adult literacy rate, population 15+ years, male (%)_num", "mult": -1}
+      },
+      {
+        "orient": "left",
+        "zindex": 1,
+        "scale": "Elderly literacy rate, population 65+ years, female (%)",
+        "title": "Elderly literacy rate, population 65+ years, female (%)",
+        "offset": {"scale": "ord", "value": "Elderly literacy rate, population 65+ years, female (%)_num", "mult": -1}
+      },
+      {
+        "orient": "left",
+        "zindex": 1,
+        "scale": "Elderly literacy rate, population 65+ years, male (%)",
+        "title": "Elderly literacy rate, population 65+ years, male (%)",
+        "offset": {"scale": "ord", "value": "Elderly literacy rate, population 65+ years, male (%)_num", "mult": -1}
+      },
+      {
+        "orient": "left",
+        "zindex": 1,
+        "scale": "Literacy rate, population 25-64 years, female (%)",
+        "title": "Literacy rate, population 25-64 years, female (%)",
+        "offset": {"scale": "ord", "value": "Literacy rate, population 25-64 years, female (%)_num", "mult": -1}
+      },
+      {
+        "orient": "left",
+        "zindex": 1,
+        "scale": "Literacy rate, population 25-64 years, male (%)",
+        "title": "Literacy rate, population 25-64 years, male (%)",
+        "offset": {"scale": "ord", "value": "Literacy rate, population 25-64 years, male (%)_num", "mult": -1}
+      },
+      {
+        "orient": "left",
+        "zindex": 1,
+        "scale": "Youth literacy rate, population 15-24 years, female (%)",
+        "title": "Youth literacy rate, population 15-24 years, female (%)",
+        "offset": {"scale": "ord", "value": "Youth literacy rate, population 15-24 years, female (%)_num", "mult": -1}
+      },
+      {
+        "orient": "left",
+        "zindex": 1,
+        "scale": "Youth literacy rate, population 15-24 years, male (%)",
+        "title": "Youth literacy rate, population 15-24 years, male (%)",
+        "offset": {"scale": "ord", "value": "Youth literacy rate, population 15-24 years, male (%)_num", "mult": -1}
+      }
+    ],
+    "marks": [
+      {
+        "type": "group",
+        "from": {"data": "cars"},
+        "marks": [
+          {
+            "type": "line",
+            "from": {"data": "fields"},
+            "encode": {
+              "enter": {
+                "x": {"scale": "ord", "field": "data"},
+                "y": {
+                  "scale": {"datum": "data"},
+                  "field": {"parent": {"datum": "data"}}
+                },
+                "stroke": {"value": "steelblue"},
+                "strokeWidth": {"value": 1.01},
+                "strokeOpacity": {"value": 0.3}
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
