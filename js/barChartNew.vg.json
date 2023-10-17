@@ -1,0 +1,50 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": { "text": "Education around the world" },
+    "data": {
+        "url": "https://raw.githubusercontent.com/xavierandueza/FIT3179_Data_Vis/main/data/CumulativeDropOutRatesPrimary.csv"
+    },
+    "params" : [
+        {
+            "name": "metric_selection",
+            "value": "Cumulative drop-out rate to the last grade of primary education, female (%)",
+            "bind": {
+              "input": "select",
+              "options": [
+                "Cumulative drop-out rate to the last grade of primary education, female (%)",
+                "Cumulative drop-out rate to the last grade of primary education, male (%)"
+              ],
+              "labels": [
+                "Female",
+                "Male"
+              ],
+              "name": "Gender: "
+            }
+        }
+    ],
+    "transform" : [
+        {"filter" : "datum.Indicator_Name == metric_selection"}
+    ],
+    "encoding": {
+        "y": { 
+            "field": "2013", 
+            "type": "quantitative", 
+            "title":"Cumulative School Drop Out Rate (%)"
+        },
+        "x": { 
+            "field": "Country_Name", 
+            "type": "nominal", 
+            "title": null}
+    },
+    "layer" : [
+        {
+            "mark": "bar",
+            "encoding" : {
+              "tooltip": [
+              {"field": "Country_Name", "type": "nominal"},
+              {"field": "2013", "type": "quantitative", "title" : "Cumulative School Drop Out Rate", "format": ","}
+            ]
+          }
+        }
+    ]
+  }
