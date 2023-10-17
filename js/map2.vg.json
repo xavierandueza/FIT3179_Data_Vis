@@ -41,12 +41,12 @@
       },
       {
         "name": "student_gender",
-        "value": "female",
+        "value": "Female",
         "bind": {
           "input": "select",
           "options": [
-            "Female",
-            "Male"
+            "School life expectancy, primary, female (years)",
+            "School life expectancy, primary, male (years)"
           ],
           "labels": ["Female",
                     "Male"],
@@ -54,7 +54,9 @@
         }
       }
     ],
-
+    "transform" : [
+        {"filter": "datum.Indicator_Name == null || datum.Indicator_Name == student_gender"}
+    ],
     "data": {
         "url": "https://raw.githubusercontent.com/xavierandueza/FIT3179_Data_Vis/main/js/ne_110m_admin_0_countries.topojson",
         "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
@@ -87,17 +89,8 @@
                   "url": "https://raw.githubusercontent.com/xavierandueza/FIT3179_Data_Vis/main/data/SchoolLifeExpectancy.csv"
                 },
                 "key": "Country Name",
-                "fields": ["2009"]
+                "fields": ["2009", "Indicator_Name"]
               }
-            },
-            {
-                "filter": {
-                    "field": "Indicator Name",
-                    "oneOf": [
-                        "School life expectancy, primary, female (years)",
-                        "School life expectancy, primary, male (years)"
-                    ]
-                }
             }
           ],
           "mark": {"type": "geoshape", "stroke": "white"},
@@ -109,7 +102,7 @@
               },
               "field": "2009",
               "type": "quantitative",
-              "title": "ANER"
+              "title": "School-Life Expectancy"
             },
             "tooltip": [
               {"field": "properties.NAME", "type": "nominal", "title": "Country"},

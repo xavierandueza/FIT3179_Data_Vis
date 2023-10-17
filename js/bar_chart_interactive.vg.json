@@ -27,13 +27,13 @@
         {"filter" : "datum.Metric_Type == Type_selection"}
     ],
     "encoding": {
-        "y": { 
+        "x": { 
             "field": "2000", 
             "type": "quantitative", 
             "title":"Adjusted Net Enrolment Rate"
         },
-        "x": { 
-            "field": "Country Name", 
+        "y": { 
+            "field": "Country_Name", 
             "type": "nominal", 
             "title": null}
     },
