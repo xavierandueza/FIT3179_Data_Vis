@@ -1,0 +1,23 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 800,
+    "height": 600,
+    "title": "Spend Per Student Across Income Groups",
+    "data": { "url": "https://raw.githubusercontent.com/xavierandueza/FIT3179_Data_Vis/main/data/long_SpendPerStudent.csv" },
+    "repeat": ["Low income",
+                "Lower middle income",
+                "Upper middle income",
+                "High income: nonOECD",
+                "High income: OECD"],
+    "spec": {
+        "mark": "line",
+        "encoding": {
+        "x": {"field": "date", "timeUnit": "month"},
+        "y": {
+            "field": {"repeat": "repeat"},
+            "aggregate": "mean"
+        },
+        "color": {"field": "location"}
+        }
+    }
+}
