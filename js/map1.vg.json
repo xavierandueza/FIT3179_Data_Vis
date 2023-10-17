@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "2014 World Adjusted Net Enrolment Rates (ANER)",
+  "title": "2012 Adjusted net enrolment rate, primary, gender parity index",
   "width": 800,
   "height": 400,
   "data": {
@@ -39,9 +39,18 @@
       "mark": {"type": "geoshape", "stroke": "white"},
       "encoding": {
         "color": {
+          "condition": {
+            "test": "datum['2012'] === null || datum['2012'] <= 0",
+            "value": "lightgray"
+          },
           "field": "2012",
           "type": "quantitative",
-          "title": "ANER"
+          "title": "ANER",
+          "scale": {
+            "type": "threshold",
+            "domain": [0.75, 0.85, 0.95, 1.0],
+            "range": ["#BFEFFF", "#7FB8FF", "#3F8FFF", "#0047B2", "#002E6D"]
+          }
         },
         "tooltip": [
           {"field": "properties.NAME", "type": "nominal", "title": "Country"},
