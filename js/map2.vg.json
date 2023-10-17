@@ -1,20 +1,9 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Median house price per suburb (2010-2020)",
+    "title": "Primary School-Life Expectancy by Continent",
     "width": 400,
     "height": 400,
     "params": [
-      {
-        "name": "Year_selection",
-        "value": 2018,
-        "bind": {
-          "input": "range",
-          "min": 2010,
-          "max": 2020,
-          "step": 1,
-          "name": "Year:  "
-        }
-      },
       {
         "name": "zoom_level",
         "value": 300,
@@ -49,8 +38,28 @@
                     "Oceania"],
           "name": "Focus Area: "
         }
+      },
+      {
+        "name": "student_gender",
+        "value": "female",
+        "bind": {
+          "input": "select",
+          "options": [
+            "Female",
+            "Male"
+          ],
+          "labels": ["Female",
+                    "Male"],
+          "name": "Student Gender: "
+        }
       }
     ],
+
+    "data": {
+        "url": "https://raw.githubusercontent.com/xavierandueza/FIT3179_Data_Vis/main/js/ne_110m_admin_0_countries.topojson",
+        "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+      },
+
     "projection": {
       "type": "equirectangular",
       "center": {"expr": "center_to"},
@@ -75,23 +84,36 @@
               "lookup": "properties.NAME",
               "from": {
                 "data": {
-                  "url": "https://raw.githubusercontent.com/xavierandueza/FIT3179_Data_Vis/main/data/adjusted_net_enrolment_rate.csv"
+                  "url": "https://raw.githubusercontent.com/xavierandueza/FIT3179_Data_Vis/main/data/SchoolLifeExpectancy.csv"
                 },
                 "key": "Country Name",
-                "fields": ["2014"]
+                "fields": ["2009"]
               }
+            },
+            {
+                "filter": {
+                    "field": "Indicator Name",
+                    "oneOf": [
+                        "School life expectancy, primary, female (years)",
+                        "School life expectancy, primary, male (years)"
+                    ]
+                }
             }
           ],
           "mark": {"type": "geoshape", "stroke": "white"},
           "encoding": {
             "color": {
-              "field": "2014",
+              "condition": {
+                "test": "datum['2009'] === null || datum['2009'] <= 0",
+                "value": "lightgray"
+              },
+              "field": "2009",
               "type": "quantitative",
               "title": "ANER"
             },
             "tooltip": [
               {"field": "properties.NAME", "type": "nominal", "title": "Country"},
-              {"field": "2014", "type": "quantitative", "title": "Adjusted Net Enrolment Rate"}
+              {"field": "2009", "type": "quantitative", "title": "Adjusted Net Enrolment Rate"}
             ]
           }
         },
