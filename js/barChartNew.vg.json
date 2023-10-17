@@ -20,18 +20,38 @@
               ],
               "name": "Gender: "
             }
+        },
+        {
+            "name": "area_selection",
+            "value": "Economic",
+            "bind": {
+              "input": "select",
+              "options": [
+                "Sub-continent",
+                "Sub-continent, excluding high-income",
+                "Economic"
+              ],
+              "labels": [
+                "Sub-continent",
+                "Sub-continent (excluding high income)",
+                "Economic"
+              ],
+              "name": "Gender: "
+            }
         }
     ],
     "transform" : [
-        {"filter" : "datum.Indicator_Name == metric_selection"}
+        {"filter" : "datum.Indicator_Name == metric_selection"},
+        {"filter" : "datum.Area == area_selection"}
     ],
     "encoding": {
-        "y": { 
+        "x": { 
             "field": "2013", 
             "type": "quantitative", 
-            "title":"Cumulative School Drop Out Rate (%)"
+            "title":"Cumulative School Drop Out Rate (%)",
+            "scale": {"domain": [0, 100]}
         },
-        "x": { 
+        "y": { 
             "field": "Country_Name", 
             "type": "nominal", 
             "title": null}
@@ -41,7 +61,7 @@
             "mark": "bar",
             "encoding" : {
               "tooltip": [
-              {"field": "Country_Name", "type": "nominal"},
+              {"field": "Country_Name", "type": "nominal", "title" : "Name: "},
               {"field": "2013", "type": "quantitative", "title" : "Cumulative School Drop Out Rate", "format": ","}
             ]
           }
