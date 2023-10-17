@@ -28,12 +28,12 @@
               "input": "select",
               "options": [
                 "Sub-continent",
-                "Sub-continent, excluding high-income",
+                "Sub-continent (excluding high income)",
                 "Economic"
               ],
               "labels": [
                 "Sub-continent",
-                "Sub-continent (excluding high income)",
+                "Sub-continent, excluding high-income",
                 "Economic"
               ],
               "name": "Gender: "
