@@ -29,23 +29,23 @@
           "lookup": "properties.NAME",
           "from": {
             "data": {
-              "url": "https://raw.githubusercontent.com/xavierandueza/FIT3179_Data_Vis/main/data/adjusted_net_enrolment_rate.csv"
+              "url": "https://raw.githubusercontent.com/xavierandueza/FIT3179_Data_Vis/main/data/AdjustedNetEnrolmentGenderParity.csv"
             },
             "key": "Country Name",
-            "fields": ["2014"]
+            "fields": ["2012"]
           }
         }
       ],
       "mark": {"type": "geoshape", "stroke": "white"},
       "encoding": {
         "color": {
-          "field": "2014",
+          "field": "2012",
           "type": "quantitative",
           "title": "ANER"
         },
         "tooltip": [
           {"field": "properties.NAME", "type": "nominal", "title": "Country"},
-          {"field": "2014", "type": "quantitative", "title": "Adjusted Net Enrolment Rate"}
+          {"field": "2012", "type": "quantitative", "title": "Adjusted Net Enrolment Rate"}
         ]
       }
     },
