@@ -1,9 +1,15 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": { "text": "Cumulative School Dropout Rates in Regions, Economic Groups"},
+    "title": { "text": ["Cumulative School Dropout Rates", "in Regions, Economic Groups"],
+              "subtitle": "Data Source: World Bank, 2012",
+              "fontSize": 20,
+              "orient": "top",
+              "anchor": "middle"},
     "data": {
         "url": "https://raw.githubusercontent.com/xavierandueza/FIT3179_Data_Vis/main/data/CumulativeDropOutRatesPrimary.csv"
     },
+    "width": 250,
+    "height": 250,
     "params" : [
         {
             "name": "metric_selection",

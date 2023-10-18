@@ -1,37 +1,42 @@
 .flex-row-container {
     display: flex;
     flex-direction: column;  /* Stacks the children vertically */
-    width: 100%;  /* You can set a maximum width if you don't want it to stretch full page width */
+    width: 100%;
+    gap: 0px  /* You can set a maximum width if you don't want it to stretch full page width */
 }
 
 .flex-column-container {
     display: flex;
-    justify-content: flex-start; /* Align columns to the start of the container */
-    gap: 10px;  /* Space between columns */
-    margin-bottom: 15px;  /* Space between rows */
+    justify-content: space-between;  /* Adjusts space between flex items */
+    align-items: flex-start;  /* Aligns items to the start of the container */
+}
+
+.flex-column-right-adjust {
+    justify-content: flex-end;  
 }
 
 .column-fixed {
-    padding: 10px;
-    border: 1px solid black;  /* Just for visualization */
+    padding: 5px;
+    /*border: 1px solid black;  /* Just for visualization */
 }
 
 .column-flexible {
     flex: 1;
-    border: 1px solid black;
+    margin: 0 10px;
+    /*border: 1px solid black;*/
 }
 
 /* Apply Sans-Serif font to all text */
 body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  }
+}
   
   /* Headings */
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: bold;
     /* Add any other styles you want for headings */
-  }
+}
   
   /* Titles */
   .title {
@@ -39,15 +44,49 @@ body {
     font-weight: bold;
     font-size: 24px;
     /* Add any other styles you want for titles */
-  }
+}
   
   /* Paragraphs */
   p {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 16px;
     /* Add any other styles you want for paragraphs */
-  }
+}
 
   .side-bar-colour {
     background-color: #808080; /* Replace with your desired hex color */
-  }
+}
+
+#bar-chart {
+    position: relative;
+    width: 100%; /* ensure the container spans the full width of its parent if needed */
+}
+
+#bar-chart > svg, #bar-chart > canvas {
+    position: absolute;
+    right: 0;
+}
+
+li {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;                 /* Spacing between lines */
+    list-style-type: disc;            /* Bullet style: disc, circle, square, none */
+    margin-bottom: 10px;              /* Space between list items */
+    padding-left: 10px;               /* Space before bullet and text */
+    box-sizing: border-box;
+}
+
+/* For nested lists, you might want to change bullet style */
+li li {
+    list-style-type: circle;          /* For second level lists */
+}
+
+li li li {
+    list-style-type: square;          /* For third level lists */
+}
+
+.small-font {
+    font-size: 10px;
+}
+

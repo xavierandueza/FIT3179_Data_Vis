@@ -1,8 +1,12 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Primary School-Life Expectancy by Continent",
-    "width": 400,
-    "height": 400,
+    "title": {"text" : "Primary School-Life Expectancy",
+              "subtitle": "Data Source: World Bank, 2012",
+              "fontSize": 20,
+              "orient": "top",
+              "anchor": "middle"},
+    "width": 375,
+    "height": 385,
     "params": [
       {
         "name": "zoom_level",
@@ -102,7 +106,7 @@
               },
               "field": "2009",
               "type": "quantitative",
-              "title": ["Primary School-Life", "Expectancy"],
+              "title": ["Primary", "School-Life", "Expectancy"],
               "scale": {"scheme": "viridis"}
             },
             "tooltip": [

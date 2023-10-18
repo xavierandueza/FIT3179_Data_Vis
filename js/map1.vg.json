@@ -1,7 +1,11 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Worldwide 2012 Adjusted net enrolment rate (ANER) Gender Parity Index (GPI), Primary School Level",
-  "width": 800,
+  "title": {"text" : "World Adjusted net enrolment rate (ANER) Gender Parity Index (GPI), Primary School Level",
+            "subtitle": "Data Source: World Bank, 2012",
+            "fontSize": 20,
+            "orient": "top",
+            "anchor": "middle"},
+  "width": 900,
   "height": 400,
   "data": {
     "url": "https://raw.githubusercontent.com/xavierandueza/FIT3179_Data_Vis/main/js/ne_110m_admin_0_countries.topojson",
@@ -48,7 +52,7 @@
           "title": ["ANER","GPI"],
           "scale": {
             "type": "threshold",
-            "domain": [0.8, 0.85, 0.90, 0.95, 1.0],
+            "domain": [0.8, 0.85, 0.90, 0.95, 1.0, 1.05],
             "scheme" : "viridis"
           }
         },

@@ -1,73 +1,208 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
-  <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.5.0"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.21.0"></script>
+    <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.5.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.21.0"></script>
 
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Looking at World Education Outcomes</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            padding: 0;
-            text-align: center;
-        }
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-        }
-        p {
-            font-size: 1.2em;
-            margin-bottom: 40px;
-        }
-        #choropleth_map {
-          display: block;
-          width: 100%;
-          height: 500px;
-          margin-bottom: 20px;
-        }
-    </style>
+    <title>Your Page Title</title>
+    <link rel="stylesheet" type="text/css" href="css/test.css">  <!-- Linking to the CSS file -->
 
 </head>
 
-<body>
-  <h1>Looking at World Education Outcomes</h1>
+<body style="background-color: #2d593c;">
+  <div class = "flex-column-container">
+      <!-- Left hand side of screen -->
+      <div class="column-flexible side-bar-colour"></div>
 
-  <p>
-      Education plays a pivotal role in shaping the destinies of individuals, nations, and economies. It is the cornerstone for personal development, fostering equality, and promoting sustainable development. By examining education outcomes across the globe, we gain valuable insights into the progress and challenges faced by different regions, thereby enabling informed decision-making and targeted interventions.
-  </p>
-  
-  <div id="choropleth_map"></div>
+      <!-- Middle section of screen -->
+      <div class = "column-fixed" style="width: 1000px; background-color: #ffffff">
 
-  <div id="barchart"></div>
+          <div class="flex-row-container">  <!-- Outer flex container for rows -->
+              
+              <!-- Title Row -->
+              <div class = "flex-column-container">
+                  <div class="column-flexible">
+                    <h1>World Primary Level Education - A Gendered Lense</h1>
+                  </div>
+              </div>
+              
+              <!-- Intro text row -->
+              <div class="flex-column-container">
+                  <div class="column-flexible">Primary education serves as the foundational bedrock upon which all subsequent learning is built. It's the initial stage where children develop basic literacy, numeracy skills, and formative perspectives about the world around them. By ensuring a robust primary education, we set the trajectory for lifelong learning and informed global citizenship.
 
-  <script type="text/javascript">
+                    <br><br>Delving into global data on primary education offers a window into the earliest stages of educational engagement and disparity. It's here where patterns of enrolment, dropout, and literacy first manifest, and where gender disparities can be most profound. Given its pivotal role, focusing on primary education allows us to </div>
+                  <div class="column-flexible">gauge the root causes of challenges that may persist or amplify at later educational stages.
+                    <br><br>This visualization provides a detailed look at primary education across the globe. From enrolment statistics to early dropout rates, and from foundational literacy achievements to nuanced gender disparities, the data paints a vivid picture. Our specific spotlight on gender outcomes at this level underscores the urgency of addressing discrepancies in educational access and outcomes between sexes. Through this lens, we aim to present a compelling, data-driven narrative of the primary education landscape and highlight the critical importance of ensuring equity from the very start of one's educational journey.</div>
+              </div>
+              
+              <!-- Header 1 -->
+              <div class = "flex-column-container">
+                <div class="column-flexible">
+                  <h2>World Gender Parity through Maps</h2>
+                </div>
+            </div>
+              
+              <!-- Map row -->
+              <div class="flex-column-container">
+                  <div id = "world-map" class="column-flexible"></div>
+                  
+                  <!-- insert map script -->
+                  <script type="text/javascript">
 
-    var spec1 = "js/map1.vg.json";
-    vegaEmbed('#choropleth_map', spec1).then(function(result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
+                      var spec1 = "js/map1.vg.json";
+                      vegaEmbed('#world-map', spec1).then(function(result) {
+                        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+                      }).catch(console.error);
+                  
+                    </script>
+              </div>
 
-  </script>
+              <!-- JUST TEXT HERE TO EXPLAIN THE ABOVE -->
+              <div class="flex-column-container">
+                <div class="column-flexible">
+                  <p>The Gender Parity Index (GPI) in the context of education is a significant measure, providing insight into the relative access to education for females compared to males. Specifically, for primary education, the GPI is defined as the ratio of female to male net primary education enrolment rates. A GPI of 1 suggests that males and females are equally enrolled at this level of education. A number below 1 indicates a gender disparity favoring males, suggesting that fewer females are enrolled in primary education compared to their male counterparts.
+                    <br><br>Gender disparities in education can have long-term implications for societal progress, economic development, and gender equality. Understanding the disparities helps policymakers and stakeholders target interventions effectively, ensuring that all children, regardless of gender, have equal access to quality education.
+                    <br><br>Understanding the disparities helps policymakers and stakeholders target interventions effectively, ensuring that all children, regardless of gender, have equal access to quality education. At present, some regions demonstrate significant gender imbalances in primary education. As per the visualization:
+                  </p>
+                </div>
+                <div class="column-flexible">
+                    <p>
+                    <strong>Angola and Chad both have a GPI of 0.77</strong>, marking some of the lowest values globally. This signifies a significant under-enrollment of girls compared to boys in these countries, reflecting the cultural, economic, and societal barriers that prevent girls from accessing and benefiting from primary education.
+                    
+                    <br><br>On the other end of the spectrum, <strong>South Africa shows a GPI of 1.13</strong>. While this may initially appear as a positive indication of more females being educated, it's essential to interpret this data judiciously. A GPI greater than 1 can indicate potential challenges for males, suggesting that fewer boys are accessing primary education compared to their female peers. This gender disparity, albeit favoring females, can have negative consequences for the male population in the long run, leading to broader socio-economic implications for the country. 
+                    <br><br>In conclusion, while GPI is a crucial tool for gauging gender disparities in education, it's imperative to view the numbers within the broader societal context.
+                    </p>
+                </div>
+            </div>
+              
+              <!-- Sub-Continents Map row -->
+              <div class="flex-column-container">
+                  <div id = "Sub-Continents" class="column-flexible">NEXT PLOT GOES HERE</div>
+                  <script type="text/javascript">
 
-  <script type="text/javascript">
+                    var spec2 = "js/map2.vg.json";
+                    vegaEmbed('#Sub-Continents', spec2).then(function(result) {
+                      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+                    }).catch(console.error);
+                
+                  </script>
+                  <div class="column-flexible" >
+                    <p><strong>Primary School-Life Expectancy (PSLE)</strong> is a measure that encapsulates the number of years a child is expected to spend in primary education, given the current enrollment rates. It provides a snapshot of the duration and quality of foundational learning a child is likely to experience in their formative years. PSLE is particularly instructive when viewed in the context of regional trends and disparities.
 
-    var spec2 = "js/bar_chart_interactive.vg.json";
-    vegaEmbed('#barchart', spec2).then(function(result) {
-      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    }).catch(console.error);
+                      <br><br>In <strong>Europe</strong>, a continent often lauded for its robust educational frameworks, many countries boast high Primary School-Life Expectancies, reflecting a strong emphasis on foundational education. Conversely, regions in <strong>Africa</strong> and parts of <strong>Asia</strong> present varied and sometimes lower PSLE. It's essential, however, to approach this data with nuance. While PSLE provides valuable insights, it's worth noting that countries have different definitions of primary education, spanning different lengths. Therefore, a high PSLE in one nation might not be directly comparable to another's. These nuances underscore the importance of contextual understanding when evaluating the depth and breadth of primary education globally.
+                    </p>
+                  </div>
+              </div>
 
-  </script>
+              <!-- HEADING 2 -->
+              <div class = "flex-column-container">
+                <div class="column-flexible">
+                  <h2>Delving into the Data</h2>
+                </div>
+              </div>
 
-  <p>
-    <br>The Adjusted Net Enrolment Rate (ANER) for a country is a significant indicator used to assess the inclusivity and accessibility of its education system. It represents the percentage of children of official school-age who are enrolled in school, providing insights into how well the country is ensuring education for all its children.
-    <br>A high ANER indicates a higher proportion of eligible children are attending schools, reflecting positively on the country's educational outreach and inclusivity. Conversely, a lower ANER may signal challenges such as geographical disparities, socio-economic barriers, or other factors limiting access to education.
-  </p>
+              <!-- Bar Chart Row -->
+              <div class="flex-column-container">
+                  <div class="column-flexible">
+                    <p><strong>Cumulative School Dropout Rates</strong> for primary education provide a pivotal insight into the percentage of students who start their primary schooling but do not complete it. These rates are instrumental in gauging the effectiveness and inclusivity of educational systems, pinpointing areas for intervention and improvement.</p>
+                    
+                    <p>Across the globe, it's generally observed that dropout rates for <strong>Males</strong> are higher than for <strong>Females</strong>. This trend becomes starkly evident in <strong>Low Income</strong> nations, where nearly a staggering 100% dropout rate from primary school is recorded for men, juxtaposed with their female counterparts. However, in the <strong>Arab world</strong>, the narrative shifts, with a higher proportion of dropouts observed for girls than for boys. Such disparities underscore the intricate interplay of socio-economic, cultural, and policy-related factors shaping educational trajectories in different regions.</p>
 
+                    <p>Understanding these dropout rates is crucial, as they not only reflect the accessibility and quality of primary education but also serve as precursors to long-term societal and economic implications. Addressing these variances is foundational for fostering inclusive, resilient, and equitable educational landscapes globally.</p>
+                  </div>
+                  <div id = "bar-chart" class="column-flexible">NEXT PLOT GOES HERE</div>
+                  <script type="text/javascript">
+
+                    var spec3 = "js/barChartNew.vg.json";
+                    vegaEmbed('#bar-chart', spec3).then(function(result) {
+                      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+                    }).catch(console.error);
+                
+                  </script>
+              </div>
+
+              <!-- Sub-Time Plots row -->
+              <div class="flex-column-container">
+                <div id = "sub-time-plots" class="column-flexible"></div>
+                
+                <!-- insert map script -->
+                <script type="text/javascript">
+
+                    var spec4 = "js/repeatAttemptTimePlots.vg.json";
+                    vegaEmbed('#sub-time-plots', spec4).then(function(result) {
+                      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+                    }).catch(console.error);
+                
+                  </script>
+                  
+            </div>
+
+              <!-- JUST TEXT HERE TO EXPLAIN THE ABOVE -->
+              <div class="flex-column-container">
+                  <div class="column-flexible">
+                    <p><strong>Spend per student as a % of GDP Per Capita</strong> is a significant metric in the realm of educational investment. It elucidates the financial commitment a country makes towards each student's education in relation to its overall economic performance. A higher percentage reflects a greater investment in education relative to the country's economic output, signaling the prioritization of education in that nation's developmental agenda.</p>
+
+                    <p>In the global landscape, <strong>High Income</strong> nations, especially those part of the <strong>OECD</strong>, have consistently earmarked approximately 20% of their GDP per capita towards education per student. On the contrary, <strong>High Income non-OECD</strong> countries generally invest around 15%. Yet, it's worth noting that there's been a discernible uptick in educational spending by the latter group in recent times, indicating a shifting emphasis on educational infrastructure and quality.</p>
+
+                    <p>When we probe the spending patterns across various income groups, the investment remains relatively stable over time, particularly in <strong>High Income</strong> and <strong>Upper Middle Income</strong> nations. These countries have consistently prioritized educational expenditure, understanding its profound implications on long-term growth and societal well-being.</p>
+                  </div>
+                  <div class="column-flexible">
+                    <p>However, trends diverge when analyzing <strong>Low Income</strong> nations, which typically allocate the least, hovering around 10%. Similarly, <strong>Lower Middle Income</strong> countries invest about 15% on average. An exception is found in the <strong>Europe and Central Asia</strong> region, where Lower Middle Income countries demonstrate an educational spending pattern akin to High Income, OECD nations, signifying a regional emphasis on quality education.</p>
+
+                    <p>Notably, while many countries have maintained their educational spending, a slight decrease over time in <strong>Low Income</strong> nations raises concerns. It underscores the pressing need to address the challenges these nations face, ensuring that budgetary constraints do not compromise the quality and accessibility of primary education.</p>
+
+                    <p>In essence, the spend per student as a percentage of GDP Per Capita offers invaluable insights into a nation's educational priorities. By understanding these patterns, policymakers and stakeholders can strategize effectively, ensuring a balanced and inclusive educational landscape that benefits all segments of society.</p>
+                  </div>
+              </div>
+              
+              <!-- Parallel Coord Plot -->
+              <div class="flex-column-container">
+                  <div id = "parallelCoordPlot" class="column-flexible">PLOT HERE</div>
+                  <!-- insert map script -->
+                  <script type="text/javascript">
+
+                    var spec5 = "js/parallelCoordPlot.vg.json";
+                    vegaEmbed('#parallelCoordPlot', spec5).then(function(result) {
+                      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+                    }).catch(console.error);
+                
+                  </script>
+              </div>
+
+              <!-- JUST TEXT HERE TO EXPLAIN THE ABOVE -->
+              <div class="flex-column-container">
+                <div class="column-flexible">
+                  <p><strong>Literacy</strong>, at its core, refers to an individual's ability to read and write, a fundamental skill that serves as a bedrock for personal, social, and economic development. The <strong>literacy rate</strong> measures the percentage of a specific age group within a population that can read and write. It provides a lens through which the effectiveness of an educational system and the accessibility of education in a country or region can be gauged.</p>
+
+                  <p>In the vast expanse of <strong>Sub-Saharan African</strong> nations, literacy remains a pressing concern. Many of these nations exhibit relatively low literacy rates, particularly when compared to global averages. Furthermore, a concerning pattern emerges when delving deeper into gender disparities. A significant proportion of literate adults in these regions are males, overshadowing their female counterparts. This disparity underlines the societal, cultural, and economic challenges that inhibit women from accessing and benefiting from education in these regions.</p>
+
+                  <p>Parallels can be drawn with certain <strong>South Asian</strong> nations that exhibit a similar trend. Male literacy rates here too tend to outpace those of females, underscoring deeply rooted socio-cultural norms and barriers that restrict women's educational opportunities.</p>
+                </div>
+                <div class="column-flexible">
+                  <p>Digging further into demographic nuances, a striking observation surfaces in countries spanning the <strong>South Asian</strong>, <strong>Middle East</strong>, and <strong>North African</strong> regions. The elderly population, particularly women, grapples with significantly low literacy rates. While the rates for men are not remarkably higher, the profound gender gap is evident. This can be attributed to traditional roles and responsibilities that the older generation, especially women, adhered to in these cultures. Coupled with limited access to education and formal schooling in their youth, this has resulted in stark literacy disparities amongst the elderly.</p>
+
+                  <p>Contrastingly, the regions of <strong>Europe & Central Asia</strong> shine as beacons of high literacy. Their rates are commendable, even amongst the elderly, irrespective of gender. Such high literacy levels are indicative of robust educational infrastructures, progressive societal norms, and consistent emphasis on the value of education across generations.</p>
+
+                  <p>Similarly, <strong>East Asia & Pacific</strong> mirrors the high literacy accomplishments of Europe & Central Asia. However, it's crucial to approach this with nuance, as some nations within this region do exhibit dips in literacy, warranting attention and targeted interventions.</p>
+                </div>
+              </div>
+
+              <div class="flex-column-container">
+                  <div class="column-flexible ">
+                    <p class = small-font>Data sourced from the <a href="https://databank.worldbank.org/source/education-statistics">World Bank Education Statistics</a></p>
+                  </div>
+              </div>
+          
+          </div>
+      </div>
+
+      <!-- Right hand side of screen -->
+      <div class="column-flexible side-bar-colour"></div>
+  </div>
 </body>
-</html>
 
+</html>
