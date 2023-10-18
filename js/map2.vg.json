@@ -102,7 +102,8 @@
               },
               "field": "2009",
               "type": "quantitative",
-              "title": "School-Life Expectancy"
+              "title": ["Primary School-Life", "Expectancy"],
+              "scale": {"scheme": "viridis"}
             },
             "tooltip": [
               {"field": "properties.NAME", "type": "nominal", "title": "Country"},
@@ -130,14 +131,17 @@
       ],
       "config": {
         "axisX": {"domain": false, 
-                  "labelAngle": -45, 
-                  "tickColor": "#ccc", 
-                  "title": null,
-                  "labelFontSize": 10,
-                  "labelFontWeight": "normal"},
+                    "labelAngle": -45, 
+                    "tickColor": "#ccc", 
+                    "title": null,
+                    "labelFontSize": 12,
+                    "labelFontWeight": "normal",
+                    "titleFontSize": 12
+                  },
         "axisY": {
-        "labelFontSize": 12,
-        "labelFontWeight": "normal"
+          "labelFontSize": 12,
+          "labelFontWeight": "normal",
+          "titleFontSize": 12
         },
         "view": {"stroke": null},
         "style": {
@@ -147,7 +151,8 @@
           "tick": {"orient": "horizontal"}
         },
         "legend": {
-          "labelFontSize": 12
+          "labelFontSize": 12,
+          "titleFontSize": 12
         }
       }
-  }
+}

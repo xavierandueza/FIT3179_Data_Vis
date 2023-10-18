@@ -22,10 +22,11 @@
                           "timeUnit": "year"},
                   "y": {"aggregate" : "mean", "field": {"repeat": "repeat"}, 
                           "type": "quantitative", 
-                          "title" : "Spend Per Student, Per GDP Per Capita (%)"},
+                          "title" : "Spend Per Student (%GDP Per Capita)"},
                   "color": {"field": "Region", "legend" : {"orient": "bottom"}, "scale": {"scheme": "viridis"}},
                   "tooltip": [
-                      {"field": "Region", "type": "nominal", "title": "Region"}
+                      {"field": "Region", "type": "nominal", "title": "Region"},
+                      {"aggregate": "mean", "field": {"repeat": "repeat"}, "type": "quantitative", "title": "Average Spend Per Student (%GDP Per Capita)", "format" : ".2f"}
                   ]
               }
           },
@@ -43,6 +44,8 @@
               },
               "mark": {
                 "type": "text",
+                "fontSize" : 12,
+                "fontWeight" : "bold",
                 "align": "right",
                 "baseline": "bottom",
                 "x": "width",
@@ -54,14 +57,18 @@
   },
   "config": {
     "axisX": {"domain": false, 
-              "labelAngle": -45, 
-              "tickColor": "#ccc", 
-              "title": null,
-              "labelFontSize": 10,
-              "labelFontWeight": "normal"},
+                "labelAngle": -45, 
+                "tickColor": "#ccc", 
+                "title": null,
+                "labelFontSize": 12,
+                "labelFontWeight": "normal",
+                "titleFontSize": 12
+              },
     "axisY": {
-    "labelFontSize": 12,
-    "labelFontWeight": "normal"
+      "labelFontSize": 12,
+      "labelFontWeight": "normal",
+      "titleFontSize": 12,
+      "titleFontWeight": "normal"
     },
     "view": {"stroke": null},
     "style": {
@@ -71,7 +78,8 @@
       "tick": {"orient": "horizontal"}
     },
     "legend": {
-      "labelFontSize": 12
+      "labelFontSize": 12,
+      "titleFontSize": 12
     }
   }
 }

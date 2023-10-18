@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": { "text": "Education around the world" },
+    "title": { "text": "Cumulative School Dropout Rates in Regions, Economic Groups"},
     "data": {
         "url": "https://raw.githubusercontent.com/xavierandueza/FIT3179_Data_Vis/main/data/CumulativeDropOutRatesPrimary.csv"
     },
@@ -69,14 +69,17 @@
     ],
     "config": {
       "axisX": {"domain": false, 
-                "labelAngle": -45, 
-                "tickColor": "#ccc", 
-                "title": null,
-                "labelFontSize": 10,
-                "labelFontWeight": "normal"},
+                  "labelAngle": -45, 
+                  "tickColor": "#ccc", 
+                  "title": null,
+                  "labelFontSize": 12,
+                  "labelFontWeight": "normal",
+                  "titleFontSize": 12                  
+                },
       "axisY": {
-      "labelFontSize": 12,
-      "labelFontWeight": "normal"
+        "labelFontSize": 12,
+        "labelFontWeight": "normal",
+        "titleFontSize": 12
       },
       "view": {"stroke": null},
       "style": {
@@ -86,7 +89,8 @@
         "tick": {"orient": "horizontal"}
       },
       "legend": {
-        "labelFontSize": 12
+        "labelFontSize": 12,
+        "titleFontSize": 12
       }
     }
   }

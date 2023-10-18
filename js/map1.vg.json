@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "2012 Adjusted net enrolment rate, primary, gender parity index",
+  "title": "Worldwide 2012 Adjusted net enrolment rate (ANER) Gender Parity Index (GPI), Primary School Level",
   "width": 800,
   "height": 400,
   "data": {
@@ -45,11 +45,11 @@
           },
           "field": "2012",
           "type": "quantitative",
-          "title": "ANER",
+          "title": ["ANER","GPI"],
           "scale": {
             "type": "threshold",
             "domain": [0.75, 0.85, 0.95, 1.0],
-            "range": ["#BFEFFF", "#7FB8FF", "#3F8FFF", "#0047B2", "#002E6D"]
+            "scheme" : "viridis"
           }
         },
         "tooltip": [
@@ -78,14 +78,17 @@
   ],
   "config": {
     "axisX": {"domain": false, 
-              "labelAngle": -45, 
-              "tickColor": "#ccc", 
-              "title": null,
-              "labelFontSize": 10,
-              "labelFontWeight": "normal"},
+                "labelAngle": -45, 
+                "tickColor": "#ccc", 
+                "title": null,
+                "labelFontSize": 12,
+                "labelFontWeight": "normal",
+                "titleFontSize": 12
+              },
     "axisY": {
-    "labelFontSize": 12,
-    "labelFontWeight": "normal"
+      "labelFontSize": 12,
+      "labelFontWeight": "normal",
+      "titleFontSize": 12
     },
     "view": {"stroke": null},
     "style": {
@@ -95,7 +98,8 @@
       "tick": {"orient": "horizontal"}
     },
     "legend": {
-      "labelFontSize": 12
+      "labelFontSize": 12,
+      "titleFontSize": 12
     }
   }
 }

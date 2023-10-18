@@ -44,7 +44,7 @@
   }, {
     "mark": "line",
     "encoding": {
-      "color": {"type": "nominal", "field": "Region"},
+      "color": {"type": "nominal", "field": "Region", "scale": {"scheme": "viridis"}},
       "detail": {"type": "nominal", "field": "index"},
       "opacity": {"value": 0.35},
       "x": {"type": "nominal", "field": "customKey"},
@@ -111,14 +111,11 @@
       "label": {"baseline": "middle", 
                 "align": "right", 
                 "dx": -5},
-      "tick": {"orient": "horizontal"},
+      "tick": {"orient": "horizontal"}
     },
     "legend": {
       "labelFontSize": 12
-    },
-    "tooltip": {
-      "fontSize": 12
-    }    
+    }
   }
 }
 
