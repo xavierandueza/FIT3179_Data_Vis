@@ -44,7 +44,7 @@
   }, {
     "mark": "line",
     "encoding": {
-      "color": {"type": "nominal", "field": "Region", "scale": {"scheme": "viridis"}},
+      "color": {"type": "nominal", "field": "Region", "scale": {"scheme": "dark2"}},
       "detail": {"type": "nominal", "field": "index"},
       "opacity": {"value": 0.35},
       "x": {"type": "nominal", "field": "customKey"},
@@ -114,7 +114,11 @@
       "tick": {"orient": "horizontal"}
     },
     "legend": {
-      "labelFontSize": 12
+      "labelFontSize": 12,
+      "labelFontWeight": "normal",
+      "titleFontSize" : 12,
+      "symbolSize" : 200,
+      "symbolOpacity" : 1
     }
   }
 }

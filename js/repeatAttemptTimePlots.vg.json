@@ -23,7 +23,7 @@
                   "y": {"aggregate" : "mean", "field": {"repeat": "repeat"}, 
                           "type": "quantitative", 
                           "title" : "Spend Per Student (%GDP Per Capita)"},
-                  "color": {"field": "Region", "legend" : {"orient": "bottom"}, "scale": {"scheme": "viridis"}},
+                  "color": {"field": "Region", "legend" : {"orient": "bottom"}, "scale": {"scheme": "dark2"}},
                   "tooltip": [
                       {"field": "Region", "type": "nominal", "title": "Region"},
                       {"aggregate": "mean", "field": {"repeat": "repeat"}, "type": "quantitative", "title": "Average Spend Per Student (%GDP Per Capita)", "format" : ".2f"}
@@ -79,7 +79,10 @@
     },
     "legend": {
       "labelFontSize": 12,
-      "titleFontSize": 12
+      "labelFontWeight": "normal",
+      "titleFontSize" : 12,
+      "symbolSize" : 100,
+      "symbolOpacity" : 1
     }
   }
 }

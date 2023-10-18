@@ -152,7 +152,10 @@
         },
         "legend": {
           "labelFontSize": 12,
-          "titleFontSize": 12
+          "labelFontWeight": "normal",
+          "titleFontSize" : 12,
+          "symbolSize" : 100,
+          "symbolOpacity" : 1
         }
       }
 }
