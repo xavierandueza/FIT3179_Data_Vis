@@ -62,9 +62,31 @@
             "encoding" : {
               "tooltip": [
               {"field": "Country_Name", "type": "nominal", "title" : "Name: "},
-              {"field": "2013", "type": "quantitative", "title" : "Cumulative School Drop Out Rate", "format": ","}
+              {"field": "2013", "type": "quantitative", "format" : ".2f", "title" : "Cumulative School Drop Out Rate"}
             ]
           }
         }
-    ]
+    ],
+    "config": {
+      "axisX": {"domain": false, 
+                "labelAngle": -45, 
+                "tickColor": "#ccc", 
+                "title": null,
+                "labelFontSize": 10,
+                "labelFontWeight": "normal"},
+      "axisY": {
+      "labelFontSize": 12,
+      "labelFontWeight": "normal"
+      },
+      "view": {"stroke": null},
+      "style": {
+        "label": {"baseline": "middle", 
+                  "align": "right", 
+                  "dx": -5},
+        "tick": {"orient": "horizontal"}
+      },
+      "legend": {
+        "labelFontSize": 12
+      }
+    }
   }

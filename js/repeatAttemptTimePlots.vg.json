@@ -1,55 +1,77 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Average Spend Per Student Across Region, in Income Groups",
-    "columns" : 2,
-    "repeat": ["Low income",
-                "Lower middle income",
-                "Upper middle income",
-                "High income: nonOECD",
-                "High income: OECD"],
-    "spec": {
-        "layer" :
-        [
-            {
-                "data": { "url": "https://raw.githubusercontent.com/xavierandueza/FIT3179_Data_Vis/main/data/wide_SpendPerStudent.csv"},
-                "transform" : [
-                    {"filter": "datum.Value !== null && datum.Value !== 0 && !isNaN(datum.Value)"}
-                ],
-                "mark" : "line",
-                "encoding": {
-                    "x": {"field": "Year", 
-                            "type": "nominal", 
-                            "timeUnit": "year"},
-                    "y": {"aggregate" : "mean", "field": {"repeat": "repeat"}, 
-                            "type": "quantitative", 
-                            "title" : "Spend Per Student, Per GDP Per Capita (%)"},
-                    "color": {"field": "Region", "legend" : {"orient": "bottom"}, "scale": {"scheme": "viridis"}},
-                    "tooltip": [
-                        {"field": "Region", "type": "nominal", "title": "Region"}
-                    ]
-                }
-            },
-            {
-                "data": {
-                  "values": [
-                    {
-                      "Low income": "Income: Low income",
-                      "Lower middle income": "Income: Lower middle income",
-                      "Upper middle income": "Income: Upper middle income",
-                      "High income: nonOECD": "Income: High income: nonOECD",
-                      "High income: OECD": "Income: High income: OECD"
-                    }
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Average Spend Per Student Across Region, in Income Groups",
+  "columns" : 2,
+  "repeat": ["Low income",
+              "Lower middle income",
+              "Upper middle income",
+              "High income: nonOECD",
+              "High income: OECD"],
+  "spec": {
+      "layer" :
+      [
+          {
+              "data": { "url": "https://raw.githubusercontent.com/xavierandueza/FIT3179_Data_Vis/main/data/wide_SpendPerStudent.csv"},
+              "transform" : [
+                  {"filter": "datum.Value !== null && datum.Value !== 0 && !isNaN(datum.Value)"}
+              ],
+              "mark" : "line",
+              "encoding": {
+                  "x": {"field": "Year", 
+                          "type": "nominal", 
+                          "timeUnit": "year"},
+                  "y": {"aggregate" : "mean", "field": {"repeat": "repeat"}, 
+                          "type": "quantitative", 
+                          "title" : "Spend Per Student, Per GDP Per Capita (%)"},
+                  "color": {"field": "Region", "legend" : {"orient": "bottom"}, "scale": {"scheme": "viridis"}},
+                  "tooltip": [
+                      {"field": "Region", "type": "nominal", "title": "Region"}
                   ]
-                },
-                "mark": {
-                  "type": "text",
-                  "align": "right",
-                  "baseline": "bottom",
-                  "x": "width",
-                  "y": 0
-                },
-                "encoding": {"text": {"field": {"repeat": "repeat"}}}
-            }
-        ]
+              }
+          },
+          {
+              "data": {
+                "values": [
+                  {
+                    "Low income": "Income: Low income",
+                    "Lower middle income": "Income: Lower middle income",
+                    "Upper middle income": "Income: Upper middle income",
+                    "High income: nonOECD": "Income: High income: nonOECD",
+                    "High income: OECD": "Income: High income: OECD"
+                  }
+                ]
+              },
+              "mark": {
+                "type": "text",
+                "align": "right",
+                "baseline": "bottom",
+                "x": "width",
+                "y": 0
+              },
+              "encoding": {"text": {"field": {"repeat": "repeat"}}}
+          }
+      ]
+  },
+  "config": {
+    "axisX": {"domain": false, 
+              "labelAngle": -45, 
+              "tickColor": "#ccc", 
+              "title": null,
+              "labelFontSize": 10,
+              "labelFontWeight": "normal"},
+    "axisY": {
+    "labelFontSize": 12,
+    "labelFontWeight": "normal"
+    },
+    "view": {"stroke": null},
+    "style": {
+      "label": {"baseline": "middle", 
+                "align": "right", 
+                "dx": -5},
+      "tick": {"orient": "horizontal"}
+    },
+    "legend": {
+      "labelFontSize": 12
     }
+  }
 }
