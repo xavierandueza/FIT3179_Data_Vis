@@ -28,7 +28,9 @@
                           "timeUnit": "year"},
                   "y": {"aggregate" : "mean", "field": {"repeat": "repeat"}, 
                           "type": "quantitative", 
-                          "title" : "Spend Per Student (%GDP Per Capita)"},
+                          "title" : "Spend Per Student (%GDP Per Capita)",
+                          "scale": {"domain": [0, 45]}
+                        },
                   "color": {"field": "Region", 
                             "legend" : {"orient": "bottom",
                                         "labelFontSize": 12,
