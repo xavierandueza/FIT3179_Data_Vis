@@ -32,23 +32,43 @@
     {
       "name": "fields",
       "values": [
-        "Adult_Literacy_Female_15",
-        "Adult_Literacy_Male_65",
-        "Elderly_Literacy_Female_65",
-        "Elderly_Literacy_Male_65",
-        "Adult_Literacy_Female_25to64",
-        "Adult_Literacy_Male_25to65",
-        "Youth_Literacy_Female15to24",
-        "Youth_Literacy_Male15to24"
+        "Adult_Literacy_Female_15", "Adult_Literacy_Male_65", "Elderly_Literacy_Female_65", 
+        "Elderly_Literacy_Male_65", "Adult_Literacy_Female_25to64", "Adult_Literacy_Male_25to65", 
+        "Youth_Literacy_Female15to24", "Youth_Literacy_Male15to24"
+      ]
+    },
+    {
+      "name": "lines",
+      "source": "literacy",
+      "transform": [
+        {
+          "type": "project",
+          "fields": ["Region", "Adult_Literacy_Female_15", "Adult_Literacy_Male_65", "Elderly_Literacy_Female_65", 
+                    "Elderly_Literacy_Male_65", "Adult_Literacy_Female_25to64", "Adult_Literacy_Male_25to65", 
+                    "Youth_Literacy_Female15to24", "Youth_Literacy_Male15to24"]
+        },
+        {
+          "type": "fold",
+          "fields": ["Adult_Literacy_Female_15", "Adult_Literacy_Male_65", "Elderly_Literacy_Female_65", 
+                    "Elderly_Literacy_Male_65", "Adult_Literacy_Female_25to64", "Adult_Literacy_Male_25to65", 
+                    "Youth_Literacy_Female15to24", "Youth_Literacy_Male15to24"],
+          "as": ["key", "value"]
+        }
       ]
     }
+    
   ],
 
   "scales": [
     {
       "name": "ord", "type": "point",
       "range": "width", "round": true,
-      "domain": {"data": "fields", "field": "data"}
+      "domain": [
+        "Adult_Literacy_Female_15", "Adult_Literacy_Male_65", "Elderly_Literacy_Female_65", 
+        "Elderly_Literacy_Male_65", "Adult_Literacy_Female_25to64", "Adult_Literacy_Male_25to65", 
+        "Youth_Literacy_Female15to24", "Youth_Literacy_Male15to24"
+      ]
+      
     },
     {
       "name": "Adult_Literacy_Female_15", "type": "linear",
@@ -89,6 +109,12 @@
       "name": "Youth_Literacy_Male15to24", "type": "linear",
       "range": "height", "zero": false, "nice": true,
       "domain": {"data": "literacy", "field": "Youth_Literacy_Male15to24"}
+    },
+    {
+      "name": "colorScale",
+      "type": "ordinal",
+      "domain": ["South Asia", "Europe & Central Asia", "Middle East & North Africa", "Sub-Saharan Africa", "Latin America & Caribbean", "East Asia & Pacific"],
+      "range": {"scheme": "viridis"}
     }
   ],
 
@@ -137,26 +163,32 @@
 
   "marks": [
     {
-      "type": "group",
-      "from": {"data": "literacy"},
-      "marks": [
-        {
-          "type": "line",
-          "from": {"data": "fields"},
-          "encode": {
-            "enter": {
-              "x": {"scale": "ord", "field": "data"},
-              "y": {
-                "scale": {"datum": "data"},
-                "field": {"parent": {"datum": "data"}}
-              },
-              "stroke": {"value": "steelblue"},
-              "strokeWidth": {"value": 1.01},
-              "strokeOpacity": {"value": 0.3}
-            }
+      "type": "line",
+      "from": {"data": "lines"},
+      "encode": {
+        "enter": {
+          "interpolate": {"value": "linear"},
+          "strokeWidth": {"value": 1.01},
+          "strokeOpacity": {"value": 0.3},
+          "stroke": { 
+            "field": "Region",
+            "scale": "colorScale"
+          }
+        },
+        "update": {
+          "x": {
+            "scale": "ord", 
+            "field": "key"
+          },
+          "y": {
+            "scale": {
+              "signal": "datum.key"
+            }, 
+            "field": "value"
           }
         }
-      ]
+      }
     }
   ]
+
 }

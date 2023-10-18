@@ -1,112 +1,105 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Parallel coordinate plot for literacy data.",
   "data": {
-    "url": "https://raw.githubusercontent.com/xavierandueza/FIT3179_Data_Vis/main/data/wide_LiteracyData.csv"
+    "url": "https://raw.githubusercontent.com/xavierandueza/FIT3179_Data_Vis/main/data/wide_LiteracyData.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "Adult_Literacy_Female_15": "number",
+        "Adult_Literacy_Male_65": "number",
+        "Elderly_Literacy_Female_65": "number",
+        "Elderly_Literacy_Male_65": "number",
+        "Adult_Literacy_Female_25to64": "number",
+        "Adult_Literacy_Male_25to65": "number",
+        "Youth_Literacy_Female15to24": "number",
+        "Youth_Literacy_Male15to24": "number"
+      }
+    }
   },
   "width": 600,
   "height": 300,
   "transform": [
-    {"filter": "datum['Adult_Literacy_Female_15']"},
     {"window": [{"op": "count", "as": "index"}]},
-    {"fold": ["Adult_Literacy_Female_15", "Adult_Literacy_Male_65", "Elderly_Literacy_Female_65", "Elderly_Literacy_Male_65", "Adult_Literacy_Female_25to64", "Adult_Literacy_Male_25to65", "Youth_Literacy_Female15to24", "Youth_Literacy_Male15to24"]},
+    {"fold": [
+      "Adult_Literacy_Female_15", "Adult_Literacy_Male_65", "Elderly_Literacy_Female_65",
+      "Elderly_Literacy_Male_65", "Adult_Literacy_Female_25to64", "Adult_Literacy_Male_25to65",
+      "Youth_Literacy_Female15to24", "Youth_Literacy_Male15to24"
+    ]},
     {
-      "joinaggregate": [
-        {"op": "min", "field": "value", "as": "min"},
-        {"op": "max", "field": "value", "as": "max"}
-      ],
-      "groupby": ["key"]
+      "calculate": "datum.key === 'Adult_Literacy_Female_15' ? 'Adult Female Literacy, Ages 15+' : (datum.key === 'Adult_Literacy_Male_65' ? 'Adult Male Literacy, Ages 15+' : (datum.key === 'Elderly_Literacy_Female_65' ? 'Elderly Female Literacy, Ages 65+' : (datum.key === 'Elderly_Literacy_Male_65' ? 'Elderly Male Literacy, Ages 65+' : (datum.key === 'Adult_Literacy_Female_25to64' ? 'Adult Female Literacy, ages 25 to 64' : (datum.key === 'Adult_Literacy_Male_25to65' ? 'Adult Male Literacy, ages 25 to 64' : (datum.key === 'Youth_Literacy_Female15to24' ? 'Youth Female Literacy, ages 15 to 24' : (datum.key === 'Youth_Literacy_Male15to24' ? 'Youth Male Literacy, ages 15 to 24' : datum.key)))))))",
+      "as": "customKey"
     },
     {
-      "calculate": "(datum.value - datum.min) / (datum.max-datum.min)",
+      "calculate": "(datum.value) / 100",
       "as": "norm_val"
-    },
-    {
-      "calculate": "(datum.min + datum.max) / 2",
-      "as": "mid"
     }
   ],
-  "layer": [
-    {
-      "mark": {"type": "rule", "color": "#ccc"},
-      "encoding": {
-        "detail": {"aggregate": "count"},
-        "x": {"field": "key"}
-      }
-    },
-    {
-      "mark": "line",
-      "encoding": {
-        "color": {"type": "nominal", "field": "Region"},
-        "detail": {"type": "nominal", "field": "index"},
-        "opacity": {"value": 0.3},
-        "x": {"type": "nominal", "field": "key"},
-        "y": {"type": "quantitative", "field": "norm_val", "axis": null},
-        "tooltip": [
-          {"type": "quantitative", "field": "Adult_Literacy_Female_15"},
-          {"type": "quantitative", "field": "Adult_Literacy_Male_65"},
-          {"type": "quantitative", "field": "Elderly_Literacy_Female_65"},
-          {"type": "quantitative", "field": "Elderly_Literacy_Male_65"},
-          {"type": "quantitative", "field": "Adult_Literacy_Female_25to64"},
-          {"type": "quantitative", "field": "Adult_Literacy_Male_25to65"},
-          {"type": "quantitative", "field": "Youth_Literacy_Female15to24"},
-          {"type": "quantitative", "field": "Youth_Literacy_Male15to24"}
-        ]
-      }
-    },
-    {
-      "encoding": {
-        "x": {"type": "nominal", "field": "key"},
-        "y": {"value": 0}
-      },
-      "layer": [
-        {
-          "mark": {"type": "text", "style": "label"},
-          "encoding": {
-            "text": {"aggregate": "max", "field": "max"}
-          }
-        },
-        {
-          "mark": {"type": "tick", "style": "tick", "size": 8, "color": "#ccc"}
-        }
-      ]
-    },
-    {
-      "encoding": {
-        "x": {"type": "nominal", "field": "key"},
-        "y": {"value": 150}
-      },
-      "layer": [
-        {
-          "mark": {"type": "text", "style": "label"},
-          "encoding": {
-            "text": {"aggregate": "min", "field": "mid"}
-          }
-        },
-        {
-          "mark": {"type": "tick", "style": "tick", "size": 8, "color": "#ccc"}
-        }
-      ]
-    },
-    {
-      "encoding": {
-        "x": {"type": "nominal", "field": "key"},
-        "y": {"value": 300}
-      },
-      "layer": [
-        {
-          "mark": {"type": "text", "style": "label"},
-          "encoding": {
-            "text": {"aggregate": "min", "field": "min"}
-          }
-        },
-        {
-          "mark": {"type": "tick", "style": "tick", "size": 8, "color": "#ccc"}
-        }
+  "layer": [{
+    "mark": {"type": "rule", "color": "#ccc"},
+    "encoding": {
+      "detail": {"aggregate": "count"},
+      "x": {"field": "customKey"}
+    }
+  }, {
+    "mark": "line",
+    "encoding": {
+      "color": {"type": "nominal", "field": "Region"},
+      "detail": {"type": "nominal", "field": "index"},
+      "opacity": {"value": 0.3},
+      "x": {"type": "nominal", "field": "customKey"},
+      "y": {"type": "quantitative", "field": "norm_val", "axis": null},
+      "tooltip": [
+        {"field": "Country_Name", "type": "nominal", "title": "Country"},
+        {"field": "Region", "type": "nominal", "title": "Region"},
+        {"field": "value", "type": "quantitative", "title": "Value", "format": ".2f"}
       ]
     }
-  ],
+  }, {
+    "encoding": {
+      "x": {"type": "nominal", "field": "customKey"},
+      "y": {"value": 0}
+    },
+    "layer": [{
+      "mark": {"type": "text", "style": "label"},
+      "encoding": {
+        "text": {"value": "100"}
+      }
+    }, {
+      "mark": {"type": "tick", "style": "tick", "size": 8, "color": "#ccc"}
+    }]
+  }, {
+    "encoding": {
+      "x": {"type": "nominal", "field": "customKey"},
+      "y": {"value": 150}
+    },
+    "layer": [{
+      "mark": {"type": "text", "style": "label"},
+      "encoding": {
+        "text": {"value": "50"}
+      }
+    }, {
+      "mark": {"type": "tick", "style": "tick", "size": 8, "color": "#ccc"}
+    }]
+  }, {
+    "encoding": {
+      "x": {"type": "nominal", "field": "customKey"},
+      "y": {"value": 300}
+    },
+    "layer": [{
+      "mark": {"type": "text", "style": "label"},
+      "encoding": {
+        "text": {"value": "0"}
+      }
+    }, {
+      "mark": {"type": "tick", "style": "tick", "size": 8, "color": "#ccc"}
+    }]
+  }],
   "config": {
-    "axisX": {"domain": false, "labelAngle": 0, "tickColor": "#ccc", "title": null},
+    "axisX": {"domain": false, 
+              "labelAngle": -45, 
+              "tickColor": "#ccc", 
+              "title": null},
     "view": {"stroke": null},
     "style": {
       "label": {"baseline": "middle", "align": "right", "dx": -5},
@@ -114,3 +107,4 @@
     }
   }
 }
+
